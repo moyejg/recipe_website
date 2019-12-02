@@ -1,0 +1,26 @@
+<%= form_with(model: direction, local: true) do |form| %>
+  <% if direction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(direction.errors.count, "error") %> prohibited this direction from being saved:</h2>
+
+      <ul>
+        <% direction.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :step_entry %>
+    <%= form.text_area :step_entry %>
+  </div>
+
+  <div class="form-group">
+    <%= form.hidden_field :recipe_id, value: @recipe.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
