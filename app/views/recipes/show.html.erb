@@ -1,29 +1,70 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @recipe.name %>
-</p>
+<div class="row">   
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h3><%= @recipe.name %></h3> 
+        <p>By: <%= current_user.username %></p>
+      </div>
+      <div class="card-body">
+        <p><%= @recipe.description %></p>
+      </div>
+    </div>
+  </div>   
+  <div class="col-md-8"> 
+    <!-- this is where images in a carousel will be shown/uploaded -->
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @recipe.description %>
-</p>
+<div class="row">
+  <div class="col-lg-6">
+    <div id="ingredient-form">
+      <%= render "ingredients/form", ingredient: @ingredient, remote: true %>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div id="direction-form">
+      <%= render "directions/form", direction: @direction, remote: true, %>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @recipe.user_id %>
-</p>
+<div class="row">
+  <div class="col-lg-6">
+    <div id="ingredients">
+      <div class="card">
+        <div class="card-body">
+          <ul>
+            <% @recipe.ingredients.each do |ingredient| %>
+              <li>
+                <p><%= ingredient.name %>, <%= ingredient.amount %> <%= ingredient.measurement %></p>
+                <br>
+              </li>
+            <% end %>
+          </ul> 
+        </div> 
+      </div> 
+    </div>
+  </div>
 
-<p>
-  <strong>Ingredient:</strong>
-  <%= @recipe.ingredient_id %>
-</p>
-
-<p>
-  <strong>Direction:</strong>
-  <%= @recipe.direction_id %>
-</p>
+  <div class="col-lg-6">
+    <div id="directions">
+      <div class="card">
+        <div class="card-body">
+          <ul>
+            <% @recipe.directions.each do |direction| %>
+              <li>               
+                <%= direction.step_entry %></p>
+                <br>                
+              </li>
+            <% end %>
+          </ul>    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>

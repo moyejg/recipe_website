@@ -11,28 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card card-body bg-light">
+        <div class="form-group">
+          <%= form.text_field :name, placeholder: "Recipe name", class: "form-control" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+        <div class="field">
+          <%= form.text_area :description, placeholder: "Describe your Recipe", class: "form-control" %>
+        </div>
+      </div>  
+    </div>
   </div>
-
-  
 
   <div class="form-group">
     <%= form.hidden_field :user_id, value: current_user.id %>
-  </div>
-
-  <div class="form-group">
-    <%= form.hidden_field :ingredient_id, value: @ingredient_id.id %>
-  </div>
-
-  <div class="form-group">
-    <%= form.hidden_field :direction_id, value: @direction_id.id %>
   </div>
 
   <div class="actions">
