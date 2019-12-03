@@ -19,14 +19,12 @@
 
 <div class="row">
   <div class="col-lg-6">
-    <div id="ingredient-form">
-      <%= render "ingredients/form", ingredient: @ingredient, remote: true %>
-    </div>
+    <%= link_to "Add Ingredient", new_ingredient_path, remote: true %>
+    <div id="ingredient-form" style="display:none;"></div>
   </div>
   <div class="col-lg-6">
-    <div id="direction-form">
-      <%= render "directions/form", direction: @direction, remote: true, %>
-    </div>
+    <%= link_to "Add Step", new_direction_path, remote: true %>
+    <div id="direction-form" style="display:none;"></div>
   </div>
 </div>
 
@@ -34,15 +32,19 @@
   <div class="col-lg-6">
     <div id="ingredients">
       <div class="card">
-        <div class="card-body">
-          <ul>
-            <% @recipe.ingredients.each do |ingredient| %>
-              <li>
-                <p><%= ingredient.name %>, <%= ingredient.amount %> <%= ingredient.measurement %></p>
-                <br>
-              </li>
-            <% end %>
-          </ul> 
+        <div class="card-header">
+          <h2>Ingredients</h2>
+          <div class="card-body">
+            <ul>
+              <% if @ingredients.nil? %>
+                <p>Please enter your ingredients.</p>
+              <% else %>
+                <div id="ingredients">    
+                  <%= render @ingredients %>
+                </div>
+              <% end %>
+            </ul>
+          </div>
         </div> 
       </div> 
     </div>
@@ -51,15 +53,17 @@
   <div class="col-lg-6">
     <div id="directions">
       <div class="card">
-        <div class="card-body">
-          <ul>
-            <% @recipe.directions.each do |direction| %>
-              <li>               
-                <%= direction.step_entry %></p>
-                <br>                
-              </li>
+        <div class="card-header">
+          <h2>Directions</h2>
+          <div class="card-body">
+            <% if @directions.nil? %>
+              <p>Please enter the directions.</p>
+            <% else %>
+              <div id="directions">    
+                <%= render @directions %>
+              </div>
             <% end %>
-          </ul>    
+          </div>
         </div>
       </div>
     </div>
