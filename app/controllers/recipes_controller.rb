@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
- 
+
 
   # GET /recipes
   # GET /recipes.json
@@ -34,6 +34,16 @@ class RecipesController < ApplicationController
   # POST /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
+
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
+        format.json { render :show, status: :created, location: @recipe }
+      else
+        format.html { render :new }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /recipes/1

@@ -15,6 +15,17 @@ class IngredientsController < ApplicationController
   # POST /ingredients.json
   def create
     @ingredient = Ingredient.create(ingredient_params)
+
+    respond_to do |format|
+      if @ingredient.save
+        format.html { redirect_to recipe_path(id: @ingredient.recipe_id), 
+        notice: 'Ingredient was successfully created.' }
+        format.json { render :show, status: :created, location: @ingredient }
+      else
+        format.html { render :new }
+        format.json { render json: @ingredient.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /ingredients/1

@@ -1,3 +1,5 @@
-<li>
-	<%= ingredient.name %>, <%= ingredient.amount %> <%= ingredient.measurement %>
-</li>
+<ul>
+    <% @recipe.ingredients.each do |ingredient|%>
+        <p><%= ingredient.name %>, <%= ingredient.amount %> <% ingredient.measurement %></p>
+    <% end %>
+</ul>

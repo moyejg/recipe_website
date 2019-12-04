@@ -14,6 +14,17 @@ class DirectionsController < ApplicationController
   # POST /directions.json
   def create
     @direction = Direction.create(direction_params)
+
+    respond_to do |format|
+      if @direction.save
+        format.html { redirect_to recipe_path(id: @direction.recipe_id), 
+        notice: 'Step was successfully created.' }
+        format.json { render :show, status: :created, location: @direction }
+      else
+        format.html { render :new }
+        format.json { render json: @direction.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /directions/1

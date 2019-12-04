@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div class="row">   
   <div class="col-md-4">
     <div class="card">
@@ -19,12 +17,14 @@
 
 <div class="row">
   <div class="col-lg-6">
-    <%= link_to "Add Ingredient", new_ingredient_path, remote: true %>
-    <div id="ingredient-form" style="display:none;"></div>
+    <div id="ingredient-form">
+      <%= render template: "ingredients/_form", ingredient: @ingredient, remote: true %>
+    </div>
   </div>
   <div class="col-lg-6">
-    <%= link_to "Add Step", new_direction_path, remote: true %>
-    <div id="direction-form" style="display:none;"></div>
+    <div id="direction-form">
+      <%= render template: "directions/_form", direction: @direction, remote: true %>
+    </div>
   </div>
 </div>
 
@@ -35,15 +35,9 @@
         <div class="card-header">
           <h2>Ingredients</h2>
           <div class="card-body">
-            <ul>
-              <% if @ingredients.nil? %>
-                <p>Please enter your ingredients.</p>
-              <% else %>
-                <div id="ingredients">    
-                  <%= render @ingredients %>
-                </div>
-              <% end %>
-            </ul>
+            <div id="tasks">    
+              <%= render template: "ingredients/_ingredient"  %>
+            </div>
           </div>
         </div> 
       </div> 
@@ -56,13 +50,9 @@
         <div class="card-header">
           <h2>Directions</h2>
           <div class="card-body">
-            <% if @directions.nil? %>
-              <p>Please enter the directions.</p>
-            <% else %>
-              <div id="directions">    
-                <%= render @directions %>
-              </div>
-            <% end %>
+            <div id="tasks">    
+              <%= render template: "directions/_direction" %>
+            </div>
           </div>
         </div>
       </div>

@@ -1,3 +1,5 @@
-<li>
-	<%= direction.step_entry %>
-</li>
+<ul>
+	<% @recipe.directions.each do |direction|%>
+    	<p><%= direction.step_entry %></p>
+    <% end %>
+</ul>
