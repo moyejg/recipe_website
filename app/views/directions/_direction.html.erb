@@ -1,5 +1,21 @@
-<ul>
-	<% @recipe.directions.each do |direction|%>
-    	<p><%= direction.step_entry %></p>
-    <% end %>
-</ul>
+<div class="card">
+  <div class="card-header">
+    <h2>Directions</h2>
+    <div class="card-body">
+      <div id="directions">    
+				<ul>
+					<% @directions.each do |direction| %>
+						<li> <%= direction.step_entry %> </li>
+					<% end %>
+				</ul>
+		  </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

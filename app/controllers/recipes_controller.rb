@@ -17,6 +17,8 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
     @ingredient = Ingredient.new
     @direction = Direction.new
+    @directions = @recipe.directions
+    @ingredients = @recipe.ingredients
   end
 
   # GET /recipes/new

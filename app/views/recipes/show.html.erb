@@ -1,6 +1,6 @@
 <div class="row">   
   <div class="col-md-4">
-    <div class="card">
+    <div class="card"> 
       <div class="card-header">
         <h3><%= @recipe.name %></h3> 
         <p>By: <%= current_user.username %></p>
@@ -30,35 +30,13 @@
 
 <div class="row">
   <div class="col-lg-6">
-    <div id="ingredients">
-      <div class="card">
-        <div class="card-header">
-          <h2>Ingredients</h2>
-          <div class="card-body">
-            <div id="tasks">    
-              <%= render template: "ingredients/_ingredient"  %>
-            </div>
-          </div>
-        </div> 
-      </div> 
-    </div>
-  </div>
-
-  <div class="col-lg-6">
-    <div id="directions">
-      <div class="card">
-        <div class="card-header">
-          <h2>Directions</h2>
-          <div class="card-body">
-            <div id="tasks">    
-              <%= render template: "directions/_direction" %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render @ingredient %>     
+  </div> 
+  <div class="col-lg-6">    
+    <%= render @direction %>
   </div>
 </div>
+
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>

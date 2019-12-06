@@ -1,5 +1,17 @@
-<ul>
-    <% @recipe.ingredients.each do |ingredient|%>
-        <p><%= ingredient.name %>, <%= ingredient.amount %> <% ingredient.measurement %></p>
-    <% end %>
-</ul>
+<div class="card">
+  <div class="card-header">
+    <h2>Ingredients</h2>
+    <div class="card-body">
+      <div id="ingredients">   
+        <ul>
+    	    <% @ingredients.each do |ingredient| %>
+    	      <li> <%= ingredient.name %>, <%= ingredient.amount %> <%= ingredient.measurement %> </li>
+    		  <% end %>
+  	    </ul>
+	    </div>
+    </div>
+  </div>
+</div>
+       
+
+

@@ -1,9 +1,10 @@
 class DirectionsController < ApplicationController
-  before_action :set_direction, only: [:show, :edit, :update, :destroy]
-  before_action :set_task, only: [:edit, :update, :destroy]
+  before_action :all_directions, only: [:create, :index]
+  before_action :set_direction, only: [:edit, :update, :destroy]
 
   def new
     @direction = Direction.new
+    @direction.recipe_id = @recipe_id
   end
 
   # GET /directions/1/edit
@@ -13,18 +14,19 @@ class DirectionsController < ApplicationController
   # POST /directions
   # POST /directions.json
   def create
-    @direction = Direction.create(direction_params)
-
-    respond_to do |format|
-      if @direction.save
-        format.html { redirect_to recipe_path(id: @direction.recipe_id), 
-        notice: 'Step was successfully created.' }
-        format.json { render :show, status: :created, location: @direction }
-      else
-        format.html { render :new }
-        format.json { render json: @direction.errors, status: :unprocessable_entity }
-      end
-    end
+    @direction = Direction.create(direction_params) 
+    @recipe_id = direction.recipe_id
+    # respond_to do |format|
+    #   if @direction.save
+    #     format.js
+    #     format.html { redirect_to recipe_path(id: @direction.recipe_id), 
+    #     notice: 'Step was successfully created.' }
+    #     format.json { render :show, status: :created, location: @direction }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @direction.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /directions/1

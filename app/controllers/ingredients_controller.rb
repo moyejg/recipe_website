@@ -1,31 +1,37 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
-  before_action :set_task, only: [:edit, :update, :destroy]
+  before_action :all_ingredients, only: [:create, :index]
+  before_action :set_ingredient, only: [:edit, :update, :destroy]
 
   # GET /ingredients/new
   def new
     @ingredient = Ingredient.new
+    @ingredient.recipe_id = @recipe_id  
   end
 
   # GET /ingredients/1/edit
   def edit
   end
 
+  # def current_recipe
+  #   @recipe = Recipe.find_by(id: params[:id])
+  # end
+
   # POST /ingredients
   # POST /ingredients.json
   def create
     @ingredient = Ingredient.create(ingredient_params)
-
-    respond_to do |format|
-      if @ingredient.save
-        format.html { redirect_to recipe_path(id: @ingredient.recipe_id), 
-        notice: 'Ingredient was successfully created.' }
-        format.json { render :show, status: :created, location: @ingredient }
-      else
-        format.html { render :new }
-        format.json { render json: @ingredient.errors, status: :unprocessable_entity }
-      end
-    end
+    @recipe_id = ingredient.recipe_id
+    # respond_to do |format|
+    #   if @ingredient.save
+    #     format.js
+    #     format.html { redirect_to recipe_path(id: @ingredient.recipe_id), 
+    #     notice: 'Ingredient was successfully created.' }
+    #     format.json { render :show, status: :created, location: @ingredient }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @ingredient.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /ingredients/1
