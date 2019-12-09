@@ -1,3 +1,3 @@
-$('#ingredient-form').html("<%= j (render 'form') %>");
-$('#ingredient-entry').html(" ");
+$('#ingredient-form').html("<%= j (render 'form', :recipe => recipe.id) %>");
+
 

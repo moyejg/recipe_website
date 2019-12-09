@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy] 
 
 
 
@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1
   # GET /recipes/1.json
-  def show
+  def show    
     @recipes = Recipe.all
     @ingredient = Ingredient.new
     @direction = Direction.new
@@ -60,7 +60,7 @@ class RecipesController < ApplicationController
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
-  end
+  end 
 
   # DELETE /recipes/1
   # DELETE /recipes/1.json

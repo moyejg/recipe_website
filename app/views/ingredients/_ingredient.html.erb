@@ -1,17 +1,16 @@
 <div class="card">
   <div class="card-header">
     <h2>Ingredients</h2>
-    <div class="card-body">
-      <div id="ingredients">   
+    <div class="card-body">         
         <ul>
     	    <% @ingredients.each do |ingredient| %>
-    	      <li> <%= ingredient.name %>, <%= ingredient.amount %> <%= ingredient.measurement %> </li>
+    	      <li> <%= ingredient.name %>, <%= ingredient.amount %> <%= ingredient.measurement %> <%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Are you sure?', remote: true }, class: "delete" %> </li>
     		  <% end %>
-  	    </ul>
-	    </div>
+  	    </ul>  	    
     </div>
   </div>
 </div>
-       
+
+ 
 
 

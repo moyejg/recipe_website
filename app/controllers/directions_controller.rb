@@ -1,21 +1,34 @@
 class DirectionsController < ApplicationController
   before_action :all_directions, only: [:create, :index]
-  before_action :set_direction, only: [:edit, :update, :destroy]
+  before_action :set_direction, only: [:edit, :update, :destroy] 
+
+
+  def show
+    # @recipe_id = Recipe.find_by([:id])
+    # @directions = @recipe.directions
+  end
+    
 
   def new
-    @direction = Direction.new
-    @direction.recipe_id = @recipe_id
-  end
+    @direction = Direction.new 
+  end 
 
   # GET /directions/1/edit
   def edit
+    # @direction = Direction.find(params[:id]) 
+    # @recipe = Recipe.find(params[:recipe][:id])
   end
 
   # POST /directions
   # POST /directions.json
   def create
-    @direction = Direction.create(direction_params) 
-    @recipe_id = direction.recipe_id
+    @direction = Direction.create(direction_params)
+    @recipe = Recipe.find(params[:direction][:recipe_id])
+    @directions = @recipe.directions
+
+
+     
+
     # respond_to do |format|
     #   if @direction.save
     #     format.js
@@ -32,6 +45,9 @@ class DirectionsController < ApplicationController
   # PATCH/PUT /directions/1
   # PATCH/PUT /directions/1.json
   def update
+    # @direction.update(direction_params) 
+    # @recipe = Recipe.find(params[:direction][:recipe_id])
+    # @directions = @recipe.directions
   end
 
   # DELETE /directions/1

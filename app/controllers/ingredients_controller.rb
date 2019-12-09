@@ -2,25 +2,26 @@ class IngredientsController < ApplicationController
   before_action :all_ingredients, only: [:create, :index]
   before_action :set_ingredient, only: [:edit, :update, :destroy]
 
+  def show    
+  end
+
   # GET /ingredients/new
   def new
-    @ingredient = Ingredient.new
-    @ingredient.recipe_id = @recipe_id  
-  end
+    @ingredient = Ingredient.new  
+    # @ingredient.recipe_id = @recipe.id 
+  end 
 
   # GET /ingredients/1/edit
   def edit
   end
 
-  # def current_recipe
-  #   @recipe = Recipe.find_by(id: params[:id])
-  # end
-
   # POST /ingredients
   # POST /ingredients.json
   def create
     @ingredient = Ingredient.create(ingredient_params)
-    @recipe_id = ingredient.recipe_id
+    @recipe = Recipe.find(params[:ingredient][:recipe_id])
+    @ingredient.recipe_id = @recipe.id
+    @ingredients = @recipe.ingredients
     # respond_to do |format|
     #   if @ingredient.save
     #     format.js

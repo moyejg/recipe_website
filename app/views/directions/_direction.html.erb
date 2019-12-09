@@ -1,17 +1,18 @@
 <div class="card">
   <div class="card-header">
-    <h2>Directions</h2>
+    <h2>Directions</h2> 
     <div class="card-body">
-      <div id="directions">    
-				<ul>
-					<% @directions.each do |direction| %>
-						<li> <%= direction.step_entry %> </li>
-					<% end %>
-				</ul>
-		  </div>
+      <ul>
+        <% @directions.each do |direction| %>
+          <li><%= direction.step_entry %>  <%= link_to 'Delete', direction, method: :delete, data: { confirm: 'Are you sure?', remote: true }, class: "delete" %></li>
+        <% end %>
+      </ul>
     </div>
-  </div>
-</div>
+  </div>     
+</div>  
+
+
+
 
 
 
