@@ -9,6 +9,8 @@ class RecipesController < ApplicationController
   # GET /recipes.json
   def index
     @recipes = Recipe.all
+    @ingredients = Ingredient.all
+    @directions = Direction.all
   end
 
   # GET /recipes/1
