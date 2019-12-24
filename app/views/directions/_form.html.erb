@@ -1,9 +1,15 @@
 <%= form_with model: @direction do |form| %> 
   
   <div class="card card-body bg-light"> 
+
     <div class="form-group">
-      <%= form.text_area :step_entry, placeholder: "Enter the steps to your recipe", class: "form-control", id: "direction-entry" %>
+      <%= form.number_field :step_number, placeholder: "Step Number", class: "form-control", id:"direction-entry" %>      
     </div>
+
+    <div class="form-group">
+      <%= form.text_area :step_entry, placeholder: "Enter the steps to your recipe", class: "form-control", id: "direction-entry2" %>
+    </div>
+
 
     <div class="form-group">
       <%= form.hidden_field :recipe_id, value: @recipe.id %>

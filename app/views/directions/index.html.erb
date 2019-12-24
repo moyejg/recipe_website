@@ -14,6 +14,7 @@
   <tbody>
     <% @directions.each do |direction| %>
       <tr>
+        <td><%= direction.step_number %></td>
         <td><%= direction.step_entry %></td>
         <td><%= direction.recipe_id %></td>
         <td><%= link_to 'Show', direction %></td>

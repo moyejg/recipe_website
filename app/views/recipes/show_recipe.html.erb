@@ -1,0 +1,75 @@
+<div class="card">
+  <div class="card-header text-white bg-dark ">        
+    <div class="row">
+      <div class="col-lg">
+        <h3><%= @recipe.name %></h3>
+        <p>By: <%= @recipe.user.username %></p>
+        <p><%= @recipe.description %></p>
+      </div>
+    </div>
+  </div>      
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-4">      
+        <div class="card">
+          <div class="card-header text-white bg-secondary">               
+            <h4>Ingredients</h4>
+          </div>
+          <div class="card-body">                     
+            <ul>
+              <% @recipe.ingredients.each do |ingredient| %>
+                <li><%= ingredient.name %>, <%= ingredient.amount %> <%= ingredient.measurement %></li>
+              <% end %>
+            </ul>                     
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <% @recipe.images.each do |image| %>
+              <div class="carousel-item <%= 'active' if image == @recipe.images[0] %>" data-interval="3000">
+                <%= image_tag image, style: "width: 300px; height: auto;", class: "rounded mx-auto d-block" %>
+              </div>    
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <br>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header text-white bg-secondary">
+            <h4>Directions</h4>  
+          </div>     
+          <div class="card-body">      
+            <ul>
+              <% @recipe.directions.each do |direction| %>
+                <li><%= direction.step_entry %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-5">
+  <%= render 'comments/form', comment: @comment %>
+</div>  
+
+   
+  <% @recipe.comments.each do |comment| %>
+    <div class="card">
+      <div class="card-body">
+        <p>
+          <%= link_to comment.user.username, user_profile_path(id: comment.user_id) %>
+          <%= comment.comment_entry.html_safe %>
+        </p>    
+      </div>
+    </div>
+  <% end %>
+
+

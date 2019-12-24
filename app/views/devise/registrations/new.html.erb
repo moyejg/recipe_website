@@ -16,6 +16,12 @@
   <br>
 
   <div class="form-group">
+    <%= f.file_field :image, placeholder: "Upload a Profile Pic", class: "form-control" %>
+  </div>
+
+  <br>
+
+  <div class="form-group">
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />

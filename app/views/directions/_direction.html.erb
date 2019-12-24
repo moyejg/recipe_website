@@ -4,7 +4,7 @@
     <div class="card-body">
       <ul>
         <% @directions.each do |direction| %>
-          <li><%= direction.step_entry %>  <%= link_to 'Delete', direction, method: :delete, data: { confirm: 'Are you sure?', remote: true }, class: "delete" %></li>
+          <li> <%= direction.step_number %>. <%= direction.step_entry %>  <%= link_to 'Delete', direction, method: :delete, data: { confirm: 'Are you sure?', remote: true }, class: "delete" %></li>
         <% end %>
       </ul>
     </div>

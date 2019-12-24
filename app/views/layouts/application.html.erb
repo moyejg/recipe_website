@@ -9,73 +9,71 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">ReciMe!</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <% if user_signed_in? %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">ReciMe!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-          </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/user_profile">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+            </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      <div class="nav-item dropdown float-right">
-        <% if user_signed_in? %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="nav-item dropdown float-right">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">            
             <%= current_user.username %> <span class="caret"></span></a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#"><%= link_to "Edit Profile", edit_user_registration_path %></a>
             <a class="dropdown-item" href="#"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a>
-          </div>
-        <% else %>
-          <%= link_to "Sign In", user_session_path %>
-        <% end %>
+          </div>           
         </div>
-    </div>
-  </nav>
+      </div>
+    </nav>
+  <% end %>
+  <br>
 
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <% if user_signed_in? %>
-        <h1>Welcome Back <%= current_user.username %>!</h1>
-      <% else %>
+  <% if user_signed_in? != true %>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
         <div class="row">              
-          <div class="col-md-4">
-            <h1>View and Share Recipes!</h1>
+          <div class="col-md-4">            
+            <h1>RECIME!</h1>
+            <p><%= link_to "Sign In", user_session_path %></p>
           </div>
           <div class="col-md-4">
-            <h1>Connect With Other Chefs!</h1>
           </div>
           <div class="col-md-4">
-              <h1>Not a Member? <%= link_to "Sign Up!", new_user_registration_path %></h1>
+            <h1>Not a Member?</h1> 
+            <h3><%= link_to "Sign Up!", new_user_registration_path %></h3>
           </div>
         </div>      
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <body>
     <div class="container">

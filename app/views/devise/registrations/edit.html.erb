@@ -15,6 +15,12 @@
 
   <br>
 
+  <div class="form-group">
+    <%= f.file_field :image, placeholder: "Upload a Profile Pic", class: "form-control" %>
+  </div>
+
+  <br>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

@@ -68,6 +68,6 @@ class DirectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def direction_params
-      params.require(:direction).permit(:step_entry, :recipe_id)
+      params.require(:direction).permit(:step_number, :step_entry, :recipe_id)
     end
 end

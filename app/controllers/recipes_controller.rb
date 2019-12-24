@@ -34,6 +34,12 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
+  def show_recipe
+    @user = User.find_by(params[:id])
+    @comment = Comment.new
+    @recipe = Recipe.find(params[:recipe])
+  end
+
   # POST /recipes
   # POST /recipes.json
   def create
@@ -82,6 +88,6 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:name, :description, :user_id, :ingredient_id, :direction_id)
+      params.require(:recipe).permit(:name, :description, :user_id, images: [])
     end
 end
