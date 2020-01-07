@@ -12,14 +12,10 @@
   <% if user_signed_in? %>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="/">ReciMe!</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/home">My Recipes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="recipes/new">New recipe</a>
@@ -38,27 +34,22 @@
         </div>
       </div>
     </nav>
-  <% end %>
-  <br>
-
-  <% if user_signed_in? != true %>
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <div class="row">              
-          <div class="col-md-4">           
+    <% else %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">ReciMe!</a>     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto">
+          <div class="nav-item active">
+            <a class="nav-link" href="users/sign_up">Sign Up</a>
           </div>
-          <div class="col-md-4 text-center">
-            <h1>RECIME!</h1>
-            <h3><%= link_to "Sign In", user_session_path %></h3>
-          </div>
-          <div class="col-md-4">
-            <h3>Not a Member?</h3> 
-            <h3><%= link_to "Sign Up!", new_user_registration_path %></h3>
-          </div>
-        </div>      
+        </div>
+        <div class="nav-item float-right">
+          <a class="nav-link" href="users/sign_in">Log In</a>
+        </div>    
       </div>
-    </div>
+    </nav>
   <% end %>
+  <br> 
 
   <body>
     <div class="container">

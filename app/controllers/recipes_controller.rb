@@ -36,8 +36,10 @@ class RecipesController < ApplicationController
 
   def show_recipe
     @user = User.find_by(params[:id])
-    @comment = Comment.new
+    @comment = Comment.new    
+
     @recipe = Recipe.find(params[:recipe])
+    @recipes = Recipe.all
   end
 
   def user_profile

@@ -56,20 +56,21 @@
   </div>
 </div>
 
-<div class="col-sm-5">
-  <%= render 'comments/form', comment: @comment %>
-</div>  
 
-   
-  <% @recipe.comments.each do |comment| %>
-    <div class="card">
-      <div class="card-body">
-        <p>
-          <%= link_to comment.user.username, user_profile_path(id: comment.user_id) %>
-          <%= comment.comment_entry.html_safe %>
-        </p>    
+  <div class="row">
+    <div class="col-lg-6 offset-3">
+      <div id="comment-form">
+        <%= render template: "comments/_form" %>
       </div>
     </div>
-  <% end %>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-6 offset-3">
+      <div id="comments">
+        <%= render @comment %>  
+      </div> 
+    </div> 
+  </div>
 
 
