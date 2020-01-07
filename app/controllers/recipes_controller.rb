@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.all.page(params[:page])
     @ingredients = Ingredient.all
     @directions = Direction.all
   end
@@ -38,6 +38,16 @@ class RecipesController < ApplicationController
     @user = User.find_by(params[:id])
     @comment = Comment.new
     @recipe = Recipe.find(params[:recipe])
+  end
+
+  def user_profile
+    @user = User.find(params[:user])
+    @recipes = Recipe.all.page(params[:page])    
+  end
+
+  def home
+    @recipes = Recipe.all.page(params[:page])
+    @recipe = Recipe.find_by(params[:id])
   end
 
   # POST /recipes

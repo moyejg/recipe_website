@@ -1,25 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<div class="row">
-  <div class="col-md-6">
-    <%= image_tag current_user.image, style: "width: 200px;" %>
-    <p><%= current_user.username %></p>
-    <p><%= current_user.email %></p>
-    <%= link_to 'Add Recipe!', new_recipe_path, class: "btn btn-success" %>
-  </div>
-  <div class="col-md-6">
-  </div>
-</div>
-<br>
-
-<% current_user.recipes.each do |recipe| %>
+<% @user.recipes.each do |recipe| %>
   <div class="card">
     <div class="card-header text-white bg-dark ">        
       <div class="row">
         <div class="col-lg">
           <h3><%= link_to recipe.name, show_recipe_path(:recipe => recipe.id) %></h3>
-          <p>By: <%= current_user.username %></p>
-          <p><%= recipe.description %></p>
+          <p>By: <%= @user.username %></p>
+          <p><%= recipe.description %></p>          
         </div>
       </div>
     </div>      
@@ -44,7 +32,7 @@
             <div class="carousel-inner">
               <% recipe.images.each do |image| %>
                 <div class="carousel-item <%= 'active' if image == recipe.images[0] %>" data-interval="3000">
-                  <%= image_tag image, style: "width: 300px; height: auto;", class: "rounded mx-auto d-block" %>
+                  <%= image_tag image, style: "width: auto; height: 300px;", class: "rounded mx-auto d-block" %>
                 </div>    
               <% end %>
             </div>
@@ -61,7 +49,7 @@
             <div class="card-body">      
               <ul>
                 <% recipe.directions.each do |direction| %>
-                  <li><%= direction.step_entry %></li>
+                  <li><%= direction.step_number %>. <%= direction.step_entry %></li>
                 <% end %>
               </ul>
             </div>
@@ -73,4 +61,6 @@
    
   <br>
 <% end %>
+
+<%= paginate @recipes %>
 

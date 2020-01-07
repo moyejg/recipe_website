@@ -20,8 +20,9 @@
         <div class="form-group">
           <%= form.text_area :description, placeholder: "Describe your Recipe", class: "form-control" %>
         </div>
-        <div class="form-group">
-          <%= form.file_field :images, multiple: true, class: "form-control" %>
+        <div>
+          <%= form.file_field :images, multiple: true%>
+          <p>(Hold Ctrl to select multiple files)</p>
         </div>
 
       </div>  

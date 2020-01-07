@@ -1,5 +1,5 @@
 class DirectionsController < ApplicationController
-  before_action :all_directions, only: [:create, :index]
+  before_action :all_directions, only: [:create, :index, :update]
   before_action :set_direction, only: [:edit, :update, :destroy] 
 
 
@@ -16,7 +16,8 @@ class DirectionsController < ApplicationController
   # GET /directions/1/edit
   def edit
     # @direction = Direction.find(params[:id]) 
-    # @recipe = Recipe.find(params[:recipe][:id])
+    # @recipe = Recipe.find(params[:direction][:recipe_id])
+    # @directions = @recipe.directions
   end
 
   # POST /directions
@@ -24,10 +25,7 @@ class DirectionsController < ApplicationController
   def create
     @direction = Direction.create(direction_params)
     @recipe = Recipe.find(params[:direction][:recipe_id])
-    @directions = @recipe.directions
-
-
-     
+    @directions = @recipe.directions     
 
     # respond_to do |format|
     #   if @direction.save

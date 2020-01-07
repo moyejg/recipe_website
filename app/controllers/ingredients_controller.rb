@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
-  before_action :all_ingredients, only: [:create, :index]
-  before_action :set_ingredient, only: [:edit, :update, :destroy]
+  before_action :all_ingredients, only: [:create, :index, :update]
+  before_action :set_ingredient, only: [:edit, :update, :destroy] 
 
   def show    
   end
@@ -38,6 +38,7 @@ class IngredientsController < ApplicationController
   # PATCH/PUT /ingredients/1
   # PATCH/PUT /ingredients/1.json
   def update
+    @ingredient.update(ingredient_params)
   end
 
   # DELETE /ingredients/1

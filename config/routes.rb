@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root 'recipes#index'
   get 'user_profile' => 'recipes#user_profile'
   get 'show_recipe' => 'recipes#show_recipe'
+  get 'home' => 'recipes#home'
  
  
 
