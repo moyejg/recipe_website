@@ -52,6 +52,15 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find_by(params[:id])
   end
 
+  def search
+    if params[:search].blank?  
+      redirect_to(root_path, alert: "Empty field!") and return  
+    else  
+      @parameter = params[:search].downcase  
+      @results = Recipe.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
+    end  
+  end
+
   # POST /recipes
   # POST /recipes.json
   def create
@@ -87,7 +96,7 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy
     respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
+      format.html { redirect_to home_url, notice: 'Recipe was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,13 +1,18 @@
 <% @recipe.comments.each do |comment| %>
 	<div class="card">
 		<div class="card-header">
-	      <%= image_tag comment.user.image, style: "height: 30px;" %> <%= link_to comment.user.username, user_profile_path(id: comment.user_id) %>
+			<div class="row">				
+      			<%= image_tag comment.user.image, style: "height: 30px;" %> <%= link_to comment.user.username, user_profile_path(id: comment.user_id) %>	      		
+	    	</div>
 	    </div>
 	  	<div class="card-body">
-	    <p>
-	      <%= comment.comment_entry.html_safe %>
-	    </p>    
+		    <p>
+		      <%= comment.comment_entry.html_safe %>
+		    </p> 
 	  	</div>
+	    <% if current_user.id == comment.user_id %>
+		     <p><%= link_to 'Delete Comment', comment, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+		<% end %>   
 	</div>
 	<br>
 <% end %>

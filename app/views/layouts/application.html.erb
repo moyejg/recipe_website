@@ -20,6 +20,11 @@
           <li class="nav-item">
             <a class="nav-link" href="recipes/new">New recipe</a>
           </li>
+          <%= form_tag(search_recipe_path, :method => "get", class: 'navbar-form navbar-left') do %>  
+            <div class="input-group">  
+              <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>   
+            </div>  
+          <% end %>
         </ul>
         <div class="float-right">
           <%= image_tag current_user.image, style: "height: 30px;" %>
@@ -42,6 +47,11 @@
           <div class="nav-item active">
             <a class="nav-link" href="users/sign_up">Sign Up</a>
           </div>
+          <%= form_tag(search_recipe_path, :method => "get", class: 'navbar-form navbar-left') do %>  
+            <div class="input-group">  
+              <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>   
+            </div>  
+          <% end %>
         </div>
         <div class="nav-item float-right">
           <a class="nav-link" href="users/sign_in">Log In</a>
@@ -53,6 +63,7 @@
 
   <body>
     <div class="container">
+      <p id="alert"><%= alert %></p>
       <%= yield %>
     </div>
   </body>

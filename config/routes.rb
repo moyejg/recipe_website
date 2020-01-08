@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'user_profile' => 'recipes#user_profile'
   get 'show_recipe' => 'recipes#show_recipe'
   get 'home' => 'recipes#home'
+  get '/search' => 'recipes#search', :as => 'search_recipe'
  
  
 
