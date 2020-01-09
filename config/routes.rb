@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :recipes
 
   
-  root 'recipes#index'
+  root 'recipes#welcome'
   get 'user_profile' => 'recipes#user_profile'
   get 'show_recipe' => 'recipes#show_recipe'
   get 'home' => 'recipes#home'
