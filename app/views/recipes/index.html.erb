@@ -31,7 +31,7 @@
             <div class="carousel-inner">
               <% recipe.images.each do |image| %>
                 <div class="carousel-item <%= 'active' if image == recipe.images[0] %>" data-interval="3000">
-                  <%= image_tag image, style: "width: auto; height: 300px;", class: "rounded mx-auto d-block" %>
+                  <%= image_tag assets_path(image), style: "width: auto; height: 300px;", class: "rounded mx-auto d-block" %>
                 </div>    
               <% end %>
             </div>
